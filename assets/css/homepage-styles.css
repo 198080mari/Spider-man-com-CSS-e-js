@@ -1,0 +1,164 @@
+@import url('/assets/css/reset.css');
+@import url('/assets/css/global.css');
+
+body {
+    background: var(--primary-color);
+}
+body::before {
+    content: "";
+    background-image: url('/assets/images/spider-man-background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0.2;
+    transition: background-image 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.s-menu {
+    padding: 1rem 0;
+    width: 100%;
+    text-align: center;
+    position: relative;  /*fica a frente da img de fund pra podermos clicar*/
+}
+.s-menu__item {
+    display: inline-block;
+    text-transform: uppercase;
+    margin: 0 1.25rem;
+}
+s-menu__icon {
+    width: 2.5rem;
+    margin: 0 1.5rem;
+    vertical-align: middle;
+}
+
+.s-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    perspective: 3000px;  /*aqui no elem pai*/
+}
+.s-card {
+    border: 0.5rem solid white;
+    width: 100%;  /*100% elem pai*/
+    height: 70vh;  /*70% da area do viewport*/
+    position: absolute;  /*um card por cima do outro*/
+    transition: filter 0.5s ease-in-out;
+}
+.s-card:nth-child(1) {  /*card Tobey*/
+    transform: rotateY(0deg) translateZ(50vw);  /*translate z p/ tirar um de cima do outro*/
+}
+.s-card:nth-child(2) {  /*central Tom*/
+    transform: rotateY(120deg) translateZ(50vw);
+}
+.s-card:nth-child(3) {  /**/
+    transform: rotateY(240deg) translateZ(50vw);
+}
+.s-card__background {
+    width: calc(100vw / 3 - 10%);  /*quer porcentagem do elem. pai, só que de acordo com a largura da area util, os 10% é pra separa-los*/
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;  /*fundo muda devagar*/
+}
+.s-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /*encaixa no container*/
+    position: relative;
+    transition: 1s ease-in-out;  /*ele move devagar*/
+}
+.s-card__title {
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    position: absolute;
+    width: 100%;  /*ocupa todo o card*/
+    bottom: 0; 
+    transition: bottom 1s ease-in-out;
+}
+.s-card--hovered .s-card__background {  /*pega filho do elem hovered e pega background*/
+    cursor: pointer;
+    opacity: 0;  /*background some*/
+}
+.s-card--hovered .s-card__image{  
+    transform: scale(1.4);  /*efeito ir pra frente*/
+    filter: drop-shadow(30px 10px 4px rgba(0, 0, 0, .5));  /*sombra com 4px de expansão*/
+}
+.s-card--hovered .s-card__title {  /*nome vai pro meio e volta*/
+    bottom: 50%;
+}
+.s-cards-carousel {
+    display: flex;
+    justify-content: center;
+    width: calc(100vw / 3 - 10%); /*largura do container divide pra 3 cards 10 pro espaçamento*/
+    transform-style: preserve-3d;  /*perspectiva, cards laterias diferentes do central*/
+    transition: transform 0.4s ease-in;  /*girar rapido no começo*/
+}
+
+.s-controller {
+    position: absolute;  /*absolute não ignora comandos de posiçao*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    bottom: 1.5rem;
+    width: 100%;
+}
+.s-controller__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 2px solid white;
+    border-radius: 50%;
+    background: var(--primary-color);
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1;  /*linha estilizada não cobre circulo*/
+    transition: transform 0.3s ease-in-out;  /*transiçao lenta no começo e final*/
+}
+.s-controller__button:hover {
+    transform: scale(1.1);  /*aumenta 10%*/
+}
+.s-controller__button:nth-child(2) {  /*segundo botao*/
+    margin: 0 3.75rem;
+}
+.s-controller__button--active {
+    background: white;
+    color: var(--primary-color);
+    border: 0.1875rem solid var(--primary-color);
+    outline: 0.125rem solid white;  /*segunda borda*/
+}
+.s-controller__line {
+    background: white;
+    width: 50%;
+    height: 2px;
+    position: absolute;  /*bolinhas acima da linha*/
+}
+
+
+body#spider-man-01-hovered::before {  
+    background-image: url('/assets/images/pic-sm-bg-01.jpg');
+}
+body#spider-man-02-hovered::before {  
+    background-image: url('/assets/images/pic-sm-bg-02.jpg');
+}
+body#spider-man-03-hovered::before {  
+    background-image: url('/assets/images/pic-sm-bg-03.jpg');
+}
+body[id^="spider-man-"]::before {  /*começa com spider-man-...*/
+    opacity: 1;  /*tirou o vermelho*/
+}
+body[id^="spider-man-"] .s-card:not(.s-card--hovered) {  /*outros cards não hovered ficam p&b*/
+    filter: grayscale(100%);  /**/
+}
+
+

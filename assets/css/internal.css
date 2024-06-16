@@ -1,0 +1,192 @@
+@import url('reset.css');
+@import url('global.css');
+
+.s-wrapper {
+  display: flex;
+  height: 100vh;  /*pega a parte visivel da pag*/
+  flex-flow: row nowrap;
+}
+.s-wrapper video {  /*se colocar um video no html e pasta video, fica na img de fundo*/
+  position: fixed;
+  width: 100%;
+}
+.s-wrapper .s-left-column {
+  width: 100px;  /*largura fixa*/
+  height: 100%;  /*alt. flexivel*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  padding-right: 50px;
+  left: 0;
+  top: 0;
+  z-index: 1;  /*manter lado esq.*/
+}
+.s-wrapper .s-main-content {
+  height: 100%;  /*flexivel*/
+  width: 100%;  /*flexivel*/
+  padding-left: 130px;
+  /*background-image: url('../images/spiderman-tobey/movie-01/background.png');
+  background-size: cover;*/
+  position: relative;
+}
+.s-wrapper .s-main-content__top {
+  height: 80vh;  /*80% da div*/
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  
+}
+.s-wrapper .s-main-content__bottom {
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.s-wrapper .s-main-content.s-logo img {
+  margin-top: 50px;
+  margin-left: 0;
+  margin-bottom: 30px;
+}
+.s-wrapper .s-main-content__top .s-description {
+  background: rgba(0, 0, 0, .7);
+  max-width: 50%;
+  padding: 20px;
+  border-radius: 10px;
+}
+.s-wrapper .s-main-content__top .s-description__text p {
+  color: white;
+  line-height: 170%;
+}
+.s-wrapper .s-main-content__top .s-description .pills {
+  margin-bottom: 20px;
+}
+.s-wrapper .s-main-content .s-links {
+  padding: 20px;
+  padding-left: 0;
+}
+.s-wrapper .s-main-content  .s-links ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.navigator {
+  height: 80vh;  /*80% da area visivel do navegador na div, flexivel*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+.navigator ul li {
+  margin: 60px 0;
+}
+.navigator ul li:first-child {  /*primeiro item li*/
+  margin-top: 0;  /*para a flexibilidade*/
+}
+.navigator ul li:last-child {  
+  margin-bottom: 0;
+}
+.navigator ul li a {
+  color: white;
+  border: 3px solid white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;  /*circulo*/
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navigator::before {  /*coloca elemento assim que iniciar nav*/ /*criou linha*/
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 100%;  /*linha flexivel*/
+  background: white;
+  z-index: 0; 
+}
+.navigator ul{
+  z-index: 1;  /*esconde linha atras lista de bolinhas*/
+}
+.navigator ul li a:hover, .navigator ul li a.active {  
+  color: var(--primary-color);
+  background: white;
+} 
+.navigator .navigator__icon {
+  position: absolute;
+  top: -20px;
+}
+
+.pills ul {
+  display: flex;
+  flex-direction: row;
+}
+.pills ul li {
+  background: var(--primary-color);
+  color: white;
+  padding: 5px 15px;
+  margin: 0 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+.pills ul li:first-child {
+  margin-left: 0;
+}
+
+a.link-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+a.link-button .icon {
+  width: 32px;
+  height: 32px;
+  padding: 3px;
+  background: var(--primary-color);
+  border: solid 1px white;
+  background-clip: content-box;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+a.link-button .icon .play-icon {
+  border: 7px solid white;
+  width: 0;
+  height: 0;
+  border-top-color: transparent;  /*tira partes da div pra deixar só 1 triangulo*/
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  margin-right: -7px;
+}
+a.link-button .label {
+  margin-left: 10px;
+}
+
+.gallery {
+  padding: 20px;
+  padding-left: 0;
+} 
+.gallery ul {
+  display: flex;
+  flex-direction: row;
+}
+.gallery ul li {
+  margin-left: 25px;
+}
+.gallery ul li:first-child {
+  margin-left: 0;
+}
+.gallery ul li a img {
+  border: solid 6px white;
+  border-radius: 15px;
+}
+
+
+
+
+
+
